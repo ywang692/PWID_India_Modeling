@@ -2,7 +2,7 @@
 # This R file contains codes to extract individual-level and injection venue-level parameters for HIV transmission model. 
 # The synthetic datasets are in the forms of .csv and .rds. 
 # Columns in the synthetic dataset resemble the actual raw dataset and need to be cleaned and compiled. 
-# The code below generates two datasets:
+# The code below generates two datasets in the folder ~/data/cleaned:
 # data_indiv = characteristics of hypothetical participants
 # data_venue = characteristics of injection venues by compiling all participants who frequented an injection venue
 # 
@@ -30,8 +30,7 @@
 # spat_xxx_xx (identify from a map): 'Take a moment to think about the places where you may have injected in the past 6 months. It could be your house, your dealer s house, at a friend s place, 
 # or a public space like a street corner or park or public toilet. If it helps, think back to the last day you injected and where your day started. Over the past 6 months, in which neighborhoods have you injected?'
 
-library(tidyverse)
-dat <- readRDS("synthetic_datasets/data_synthetic.rds")
+dat <- readRDS("data/raw/data_synthetic.rds")
 
 
 # Individual-level dataset ------------------------------------------------
