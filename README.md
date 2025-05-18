@@ -18,9 +18,9 @@ This dataset is to be cleaned using `00.synthetic_dat_analysis.R` to generate da
 ## Simulations
 The model was written and executed in the R statistical software language and largely utilized the [EpiModel](http://epimodel.org/) package. 
 
-Code to load datasets, compile all parameters, and generate initial conditions for simulations is in `01.param.R`\
+Code to load datasets, compile all parameters, and generate initial conditions for simulations is in `01.param.R`
 
-Network simulations with ERGM are done with `02.net_gen.R`\
+Network simulations with ERGM are done with `02.net_gen.R`
 
 Customized modules of the tranmission model are in `03.API_extensions.R`, including initial setup, HIV testing, HIV treatment, infection, population aging, population departure and arrival, and updating networks. These codes are for the application programming interface (API) of the EpiModel package. 
 
