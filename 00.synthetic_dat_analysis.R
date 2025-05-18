@@ -94,8 +94,9 @@ for (ii in 1:nrow(data_venue)){
   data_venue$ART_adhere[ii] <- length(which(tmp$ART_adhere == 1)) / length(which(tmp$ART == 1))
 }
 
-for (ii in 4:ncol(data_venue)){
+for (ii in 2:ncol(data_venue)){
   col <- data_venue[ ,ii]
+  col <- as.numeric(col)
   col[is.nan(col)] <- 0
   data_venue[ ,ii] <- col
 }
