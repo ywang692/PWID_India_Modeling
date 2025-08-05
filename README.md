@@ -18,7 +18,7 @@ This dataset is to be cleaned using `00.synthetic_dat_analysis.R` to generate da
 ## Simulations
 The model was written and executed in the R statistical software language (v.4.4.1) and largely utilized the [EpiModel](http://epimodel.org/) package. 
 
-[renv/library]("renv/library") contains all R packages in the versions used by the project.
+[renv]("renv") contains all R packages in the versions used by the project.
 
 Code to load datasets, compile all parameters, and generate initial conditions for simulations is in `01.param.R`
 
