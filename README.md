@@ -1,1 +1,49 @@
-# PWID_India_Modeling
+# Evaluating Spatially Targeted HIV Interventions and Harm Reduction Services Among People Who Inject Drugs in a High-Burden Setting
+
+## Overview
+This repository holds the source code to reproduce results in manuscript 'Evaluating Spatially Targeted HIV Interventions and Harm Reduction Services Among People Who Inject Drugs in a High-Burden Setting'. All details of methods are described in the manuscript and supplementary materials.
+> Jasmine Wang, Steven J. Clipman, Shruti H. Mehta, Aylur K. Srikrishnan, Shobha Mohapatra, Muniratnam S. Kumar, Gregory M. Lucas, Carl A. Latkin, Sunil S. Solomon, Amy Wesolowski
+
+
+## Data
+The folder [data/raw]("data/raw") contains synthetic datasets similar to our raw survey data. 
+- `data_synthetic.csv` or `data_synthetic.rds` contain 2511 rows of individual-level survey data.
+- `edgelist_synthetic.csv` or `edgelist_synthetic.rds` contain a synthetic drug injection network with node IDs corresponding to record_ids in the individual-level raw dataset.
+
+This dataset is to be cleaned using `00.synthetic_dat_analysis.R` to generate datasets in the [data/cleaned]("data/cleaned") folder.
+- `data_indiv.csv` or `data_indiv.rds` contain 2511 rows of individual-level survey data with derived variables extracted/compiled for model paraterization. 
+- `data_venue.csv` or `data_venue.rds` contain 111 rows of injection venue-level data summarizing characteristics of all participants who reported injection drug use at each injection venue. Venue-level data, especially harm-reduction and clinical service coverage, was incorporated into our model to simulate effects of increased interventions. 
+
+
+## Simulations
+The model was written and executed in the R statistical software language and largely utilized the [EpiModel](http://epimodel.org/) package. 
+
+Code to load datasets, compile all parameters, and generate initial conditions for simulations is in `01.param.R`
+
+Network simulations with ERGM are done with `02.net_gen.R`
+
+Customized modules of the tranmission model are in `03.API_extensions.R`, including initial setup, HIV testing, HIV treatment, infection, population aging, population departure and arrival, and updating networks. These codes are for the application programming interface (API) of the EpiModel package. 
+
+Simulation conditions, such as ladder of upscaled service interventions, can be customized in `04.simulations.R`.
+
+
+## Hardware requirements and dependencies
+This code was developed on a MacBook Pro (2023), macOS: Sonoma 14.4, chip: Apple M3 Pro, memory: 18GB. 
+
+R packages required are specified in each R file and can be directly installed in R Studio. 
+
+No non-standard hardware or installations is required. 
+
+
+## Manuscript abstract
+> Introduction: People who inject drugs (PWID) continue to experience high HIV incidence in a number of settings, including India; however, HIV infections are not homogeneous among the PWID population with varying prevalence across social (injection partners) and spatial (injection venues) networks. To maximize the impact of evidence-based interventions for PWID, it is critical to identify novel delivery points, including injection venues, where HIV (testing & treatment) and harm-reduction services (medication for opioid use disorder (MOUD) and syringe service programs (SSP) could be provided.
+ 
+> Methods: 2512 PWID (10 index and 2502 recruits) were enrolled between 2017-19 in New Delhi, India, using a sociometric design (named injection partners). Based on network and behavior data, we constructed an individual transmission model of the dynamic injection network and injection venue attendance of the cohort with an exponential random graph model (ERGM) from 2017 to 2023. HIV incidence (baseline = 7.8 per 100 person-years) was simulated for each spatial targeting strategy and with increased service coverage corresponding to 50%, 75%, or 100% of their respective UNAIDS/UNODC goals to quantify the impact of spatially targeted strategies on HIV epidemic control.
+ 
+> Results: 110 injection venues with >10 visitors were identified at baseline, forming 3 spatial clusters of highly aggregated venues visited by PWID. In models targeting the same number of venues (between 1 and 12), prioritizing the most visited venues stratified by spatial clusters covered more individuals vs. prioritizing the overall most visited venues. Simulation results showed that HIV incidence decreased with increasing service and venue coverage. With all services reaching 50% of their respective coverage goals, HIV incidence decreased to between 3.8 per 100PY [3.4, 4.2, 95%CI] (1 venue) and 2.8 per 100PY [2.5, 3.2] (12 venues). Impact was greater (reduced to 2.7 per 100PY for 1 venue [2.5, 3.0] and 1.5 per 100PY for 12 venues [1.3, 1.7]) when all service goals were completely reached.
+ 
+> Conclusions: In settings with limited resources, these findings suggest that service expansion at venues that are spatially distinct with minimal overlap of PWID population has a slightly larger impact on reducing HIV incidence than targeting the most highly populated venues that may be more clustered, limiting the number of unique PWID reached. However, as coverage across venues expands, the two approaches tend to overlap.
+
+
+For questions, please reach out to Dr. Amy Wesolowski (awesolowski@jhu.edu) or Jasmine Wang (ywang692@jhmi.edu)
+
